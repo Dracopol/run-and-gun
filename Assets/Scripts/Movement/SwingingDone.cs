@@ -5,10 +5,10 @@ using UnityEngine;
 public class SwingiAbility : MonoBehaviour
 {
     [Header("References")]
-    public LineRenderer lr;
-    public Transform gunTip, cam, player;
-    public LayerMask whatIsGrappleable;
-    public PlayerMovement pm;
+    [SerializeField] private LineRenderer lr;
+    [SerializeField] private Transform gunTip, cam, player;
+    [SerializeField] private LayerMask whatIsGrappleable;
+    [SerializeField] private PlayerMovement pm;
 
     [Header("Swinging")]
     private float maxSwingDistance = 25f;
@@ -16,19 +16,19 @@ public class SwingiAbility : MonoBehaviour
     private SpringJoint joint;
 
     [Header("OdmGear")]
-    public Transform orientation;
-    public Rigidbody rb;
-    public float horizontalThrustForce;
-    public float forwardThrustForce;
-    public float extendCableSpeed;
+    [SerializeField] private Transform orientation;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float horizontalThrustForce;
+    [SerializeField] private float forwardThrustForce;
+    [SerializeField] private float extendCableSpeed;
 
     [Header("Prediction")]
-    public RaycastHit predictionHit;
-    public float predictionSphereCastRadius;
-    public Transform predictionPoint;
+    [SerializeField] private RaycastHit predictionHit;
+    [SerializeField] private float predictionSphereCastRadius;
+    [SerializeField] private Transform predictionPoint;
 
     [Header("Input")]
-    public KeyCode swingKey = KeyCode.Mouse0;
+    [SerializeField] private KeyCode swingKey = KeyCode.Mouse0;
 
 
     private void Update()
@@ -114,7 +114,7 @@ public class SwingiAbility : MonoBehaviour
         currentGrapplePosition = gunTip.position;
     }
 
-    public void StopSwing()
+    private void StopSwing()
     {
         pm.swinging = false;
 

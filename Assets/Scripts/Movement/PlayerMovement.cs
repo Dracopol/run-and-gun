@@ -6,47 +6,45 @@ using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
+    private float moveSpeed;
     public float walkSpeed;
     public float swingSpeed;
 
-    public float groundDrag;
+    [SerializeField] private float groundDrag;
 
     [Header("Jumping")]
-    public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplier;
-    bool readyToJump;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpCooldown;
+    [SerializeField] private float airMultiplier;
+    private bool readyToJump;
 
     [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
+    [SerializeField] private KeyCode jumpKey = KeyCode.Space;
 
     [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
-    bool grounded;
+    [SerializeField] private float playerHeight;
+    [SerializeField] private LayerMask whatIsGround;
+    private bool grounded;
 
     [Header("Camera")]
 
-    public Transform orientation;
+    [SerializeField] private Transform orientation;
 
-    float horizontalInput;
-    float verticalInput;
+    private float horizontalInput;
+    private float verticalInput;
 
-    Vector3 moveDirection;
+    private Vector3 moveDirection;
 
-    Rigidbody rb;
+    private Rigidbody rb;
 
-    public MovementState state;
-    public enum MovementState
+    private MovementState state;
+    private enum MovementState
     {
         swinging,
         walking,
         air
     }
 
-    // public bool freeze;
-    public bool activeGrapple;
     public bool swinging;
 
     private void Start()
@@ -67,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         StateHandler();
 
         // handle drag
-        if (grounded && !activeGrapple)
+        if (grounded)
             rb.linearDamping = groundDrag;
         else
             rb.linearDamping = 0;

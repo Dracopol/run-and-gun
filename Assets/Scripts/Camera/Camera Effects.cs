@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class CameraEffects : MonoBehaviour
 {
-    [SerializeField] Rigidbody rb;
-    [SerializeField] Camera cam;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private Camera cam;
 
-    [SerializeField] float baseFov = 100f; 
-    [SerializeField] float maxFov = 150f; 
-    [SerializeField] float fovSpeedMultiplier = 0.5f;
+    [SerializeField] private float baseFov = 100f; 
+    [SerializeField] private float maxFov = 150f; 
+    [SerializeField] private float fovSpeedMultiplier = 0.5f;
 
-    void Update()
+    private void Update()
     {
         AdjustFovBasedOnSpeed();
     }
 
-    void AdjustFovBasedOnSpeed()
+    private void AdjustFovBasedOnSpeed()
     {
         float speed = rb.linearVelocity.magnitude;
 

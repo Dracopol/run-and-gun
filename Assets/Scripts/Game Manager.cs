@@ -4,14 +4,14 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    [SerializeField] Transform playerTransform;
-    [SerializeField] GameObject weapon;
-    [SerializeField] GameObject audios;
-    [SerializeField] GameObject panel;
-    [SerializeField] GameObject menu;
-    [SerializeField] GameObject menuTxt;
-    [SerializeField] GameObject TimerTxt;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private GameObject weapon;
+    [SerializeField] private GameObject audios;
+    [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject menuTxt;
+    [SerializeField] private GameObject TimerTxt;
 
     private float timer;
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OpenMenu()
+    private void OpenMenu()
     {
         player.SetActive(false);
         weapon.SetActive(false);
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void RestartLevelButton()
+    private void RestartLevelButton()
     {
         int cureerentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(cureerentSceneIndex);

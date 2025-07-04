@@ -4,20 +4,20 @@ using System.Collections;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject gunSound;
-    [SerializeField] GameObject hitVFXPrefab;
-    [SerializeField] Animator animator;
-    [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] int DMG = 1;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject gunSound;
+    [SerializeField] private GameObject hitVFXPrefab;
+    [SerializeField] private Animator animator;
+    [SerializeField] private ParticleSystem muzzleFlash;
+    [SerializeField] private int DMG = 1;
 
-    void Update()
+    private void Update()
     {
         HandleShoot();
         HandleSpin();
     }
 
-    void HandleSpin()
+    private void HandleSpin()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    void HandleShoot()
+    private void HandleShoot()
     {
         if (!Input.GetKeyDown(KeyCode.Mouse0)) return;
 
@@ -47,7 +47,6 @@ public class Weapon : MonoBehaviour
                 Instantiate(hitVFXPrefab, hit.point, quaternion.identity);
                 TargetHP targetHP = hit.collider.GetComponent<TargetHP>();
                 targetHP?.TakeDamage(DMG);
-                Debug.Log(hit.collider.name);
             }
         }
         else
@@ -61,7 +60,6 @@ public class Weapon : MonoBehaviour
                 PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
                 StartCoroutine(TemporarySpeedBoost(playerMovement, 10f, 20f, 2f)); 
             }
-            Debug.Log(hit.collider.name);
         }
     }
     }
